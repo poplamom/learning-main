@@ -1,21 +1,21 @@
-import React from "react";
-import { Link, Switch, Route, BrowserRouter } from "react-router-dom";
-import Signin from "./Signin";
-import FirstPage from "./FirstPage";
-import UserProfile from "./dashboard/UserProfile";
-import AllModule from "./dashboard/AllModule";
-import ModuleDetail from "./dashboard/ModuleDetail";
-import LeaningDetail from "./dashboard/Leaning/LeaningDetail";
-import AdminProfile from "./dashboard/admin/AdminProfile";
-import CrateRoom from "./dashboard/admin/CrateRoom";
-import UpdateRoom from "./dashboard/admin/UpdateRoom";
-import TaskSetting from "./dashboard/admin/TaskSetting";
-import UserSetting from "./dashboard/admin/UserSetting";
-import UpdateUser from "./dashboard/admin/UpdateUser";
-import SettingProfile from "./dashboard/SettingProfile";
+import React from 'react'
+import { Link, Switch, Route, BrowserRouter } from 'react-router-dom'
+import Signin from './Signin'
+import FirstPage from './FirstPage'
+import UserProfile from './dashboard/UserProfile'
+import AllModule from './dashboard/AllModule'
+import ModuleDetail from './dashboard/ModuleDetail'
+import LeaningDetail from './dashboard/Leaning/LeaningDetail'
+import AdminProfile from './dashboard/admin/AdminProfile'
+import CrateRoom from './dashboard/admin/CrateRoom'
+import UpdateRoom from './dashboard/admin/UpdateRoom'
+import TaskSetting from './dashboard/admin/TaskSetting'
+import UserSetting from './dashboard/admin/UserSetting'
+import UpdateUser from './dashboard/admin/UpdateUser'
+import SettingProfile from './dashboard/SettingProfile'
 
-import SignUp from "./Signup";
-import StaticCourse from "./dashboard/admin/StaticCourse";
+import SignUp from './Signup'
+import StaticCourse from './dashboard/admin/StaticCourse'
 export default function Routes() {
   return (
     <Switch>
@@ -69,5 +69,5 @@ export default function Routes() {
         <SettingProfile></SettingProfile>
       </Route>
     </Switch>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,17 +11,17 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   footer: {
-    backgroundColor: "#000",
+    backgroundColor: '#000',
     padding: theme.spacing(2),
-    color: "#fff",
-    bottom: "0",
-    width: "100%",
-    maxWidth: "1280px",
-    position: "fixed",
+    color: '#fff',
+    bottom: '0',
+    width: '100%',
+    maxWidth: '1280px',
+    position: 'fixed',
   },
-}));
+}))
 export default function Footer() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <footer className={classes.footer}>
@@ -31,5 +31,5 @@ export default function Footer() {
         </Typography>
       </Container>
     </footer>
-  );
+  )
 }

@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Button,
   Typography,
   Grid,
   TextField,
   InputLabel,
-} from "@material-ui/core";
-import Toolbar from "@material-ui/core/Toolbar";
-import Container from "@material-ui/core/Container";
+} from '@material-ui/core'
+import Toolbar from '@material-ui/core/Toolbar'
+import Container from '@material-ui/core/Container'
 
-import Links from "@material-ui/core/Link";
-import Header from "../Header";
-import Mymodule from "./MyModule";
-import NewMudule from "./NewModule";
-import axios from "axios";
-import swal from "sweetalert";
-import { useLocation } from "react-router-dom";
+import Links from '@material-ui/core/Link'
+import Header from '../Header'
+import Mymodule from './MyModule'
+import NewMudule from './NewModule'
+import axios from 'axios'
+import swal from 'sweetalert'
+import { useLocation } from 'react-router-dom'
 
 export default function SettingProfile() {
   const useStyles = makeStyles((theme) => ({
@@ -24,8 +24,8 @@ export default function SettingProfile() {
       flexGrow: 1,
     },
     toolbarSecondary: {
-      background: "#000",
-      color: "#fff",
+      background: '#000',
+      color: '#fff',
       padding: theme.spacing(3, 2),
     },
     toolbarLink: {
@@ -37,108 +37,108 @@ export default function SettingProfile() {
       padding: theme.spacing(3, 2),
     },
     formCrate: {
-      justifyContent: "center",
-      "& div": {
+      justifyContent: 'center',
+      '& div': {
         padding: theme.spacing(1),
       },
     },
     textField: {
-      width: "30em",
-      padding: "2em 0",
+      width: '30em',
+      padding: '2em 0',
     },
     btnSetting: {
-      textAlign: "center",
+      textAlign: 'center',
     },
-  }));
+  }))
 
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken')
 
-  const classes = useStyles();
-  const [disabledBtn, setDisableBtn] = useState(false);
-  const [datas, setData] = useState();
-  const [names, setName] = useState("");
-  const [password, setPass] = useState("");
-  const [email, setEmail] = useState("");
+  const classes = useStyles()
+  const [disabledBtn, setDisableBtn] = useState(false)
+  const [datas, setData] = useState()
+  const [names, setName] = useState('')
+  const [password, setPass] = useState('')
+  const [email, setEmail] = useState('')
 
   const [user, setUser] = useState(() => {
     // getting stored value
-    const saved = localStorage.getItem("user");
-    const initialValue = JSON.parse(saved);
+    const saved = localStorage.getItem('user')
+    const initialValue = JSON.parse(saved)
 
-    return initialValue || "";
-  });
-  const id = user.id;
+    return initialValue || ''
+  })
+  const id = user.id
 
   const getProfile = async () => {
     await axios
-      .get(`/api/v1/users/${id}` ,{
+      .get(`/api/v1/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setData(response.data);
+        setData(response.data)
         setName(response.data.user.name)
         setEmail(response.data.user.email)
 
-        console.log(response.data);
-        setDisableBtn(!disabledBtn);
-        console.log(response.data.user.email);
+        console.log(response.data)
+        setDisableBtn(!disabledBtn)
+        console.log(response.data.user.email)
 
         // window.location.reload();
       })
       .catch((error) => {
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
-  };
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
+  }
 
   useEffect(() => {
-    getProfile();
-  }, []);
+    getProfile()
+  }, [])
 
   const Update = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const config = {
       headers: { Authorization: `Bearer ${token}` },
-    };
+    }
 
-    const bodyParameters = { names, password,email };
-    console.log(bodyParameters);
+    const bodyParameters = { names, password, email }
+    console.log(bodyParameters)
     await axios
       .patch(
         `/api/v1/users/${id}`,
-        { name: names, password: password, email:email },
+        { name: names, password: password, email: email },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((response) => {
-        setData(response.data);
-        console.log(datas);
-        swal("Success", "Update Success", "success", {
+        setData(response.data)
+        console.log(datas)
+        swal('Success', 'Update Success', 'success', {
           buttons: false,
           timer: 2000,
         }).then((value) => {
-          console.log("UPDATE");
-          setDisableBtn(!disabledBtn);
-          
+          console.log('UPDATE')
+          setDisableBtn(!disabledBtn)
+
           // localStorage.setItem("user", JSON.stringify(response["user"]));
           // window.location.href = "/adminprofile";
-        });
+        })
       })
       .catch((error) => {
-        swal("Failed", "Error", "error");
+        swal('Failed', 'Error', 'error')
 
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
-  };
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
+  }
   const editProfile = () => {
-    setDisableBtn(false);
-  };
+    setDisableBtn(false)
+  }
   const cancleEditProfile = () => {
-    setDisableBtn(true);
-  };
+    setDisableBtn(true)
+  }
   const BtnUpdatProfile = () => {
     return (
       <>
@@ -154,18 +154,17 @@ export default function SettingProfile() {
           Cancle
         </Button>
       </>
-    );
-  };
+    )
+  }
   const BtnEdit = () => {
     return (
       <Button variant="contained" color="primary" onClick={editProfile}>
         Edit
       </Button>
-    );
-  };
+    )
+  }
   return (
     <div>
-
       <Toolbar
         component="nav"
         variant="dense"
@@ -200,8 +199,7 @@ export default function SettingProfile() {
         </Links>
       </Toolbar>
       <div className={classes.formCrate}>
-
-      <Typography variant="h5">Setting Profile</Typography>
+        <Typography variant="h5">Setting Profile</Typography>
         <form noValidate autoComplete="off" onSubmit={Update}>
           <div>
             <InputLabel htmlFor="Username">Username</InputLabel>
@@ -221,7 +219,6 @@ export default function SettingProfile() {
               variant="outlined"
               value={password}
               type="password"
-
               onChange={(e) => setPass(e.target.value)}
               disabled={disabledBtn}
               className={classes.textField}
@@ -244,5 +241,5 @@ export default function SettingProfile() {
         </form>
       </div>
     </div>
-  );
+  )
 }

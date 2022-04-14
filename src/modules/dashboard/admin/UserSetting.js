@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import ToobarAdmin from "./ToobarAdmin";
-import Button from "@material-ui/core/Button";
-import Userlist from "./Userlist";
-import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import ToobarAdmin from './ToobarAdmin'
+import Button from '@material-ui/core/Button'
+import Userlist from './Userlist'
+import axios from 'axios'
 export default function UserSetting() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,31 +13,31 @@ export default function UserSetting() {
     },
     titlepage: {
       padding: theme.spacing(2, 2),
-      color: "#fff",
-      background: "#000",
+      color: '#fff',
+      background: '#000',
     },
-  }));
-  const classes = useStyles();
+  }))
+  const classes = useStyles()
 
-  const [users, setUsers] = useState([]);
-  const token = localStorage.getItem("accessToken");
-  const [isDelUser, setDelUser] = useState(false);
-  console.log(token);
+  const [users, setUsers] = useState([])
+  const token = localStorage.getItem('accessToken')
+  const [isDelUser, setDelUser] = useState(false)
+  console.log(token)
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const { data } = await axios.get("/api/v1/users", {
+        const { data } = await axios.get('/api/v1/users', {
           headers: { Authorization: `Bearer ${token}` },
-        });
-        console.log(data);
-        setUsers(data.users.items);
+        })
+        console.log(data)
+        setUsers(data.users.items)
       } catch (error) {
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
       }
-    };
-    getUsers();
-  }, [isDelUser]);
+    }
+    getUsers()
+  }, [isDelUser])
 
   const listuser = users.map((item) => (
     <Userlist
@@ -46,7 +46,7 @@ export default function UserSetting() {
       isDelUser={isDelUser}
       setDelUser={setDelUser}
     ></Userlist>
-  ));
+  ))
 
   return (
     <div className={classes.root}>
@@ -61,5 +61,5 @@ export default function UserSetting() {
         </Grid>
       </Grid>
     </div>
-  );
+  )
 }

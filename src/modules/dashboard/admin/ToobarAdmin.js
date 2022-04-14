@@ -1,9 +1,9 @@
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import React from "react";
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Toolbar from '@material-ui/core/Toolbar'
+import Link from '@material-ui/core/Link'
+import Grid from '@material-ui/core/Grid'
+import React from 'react'
 
 export default function ToobarAdmin() {
   const useStyles = makeStyles((theme) => ({
@@ -12,12 +12,12 @@ export default function ToobarAdmin() {
     },
     titlepage: {
       padding: theme.spacing(3, 2),
-      color: "#fff",
-      background: "#000",
+      color: '#fff',
+      background: '#000',
     },
     toolbarSecondary: {
-      background: "#000",
-      color: "#fff",
+      background: '#000',
+      color: '#fff',
       padding: theme.spacing(1, 2),
     },
     toolbarLink: {
@@ -28,8 +28,8 @@ export default function ToobarAdmin() {
     dashboard: {
       padding: theme.spacing(2, 2),
     },
-  }));
-  const classes = useStyles();
+  }))
+  const classes = useStyles()
   return (
     <div>
       <Toolbar
@@ -37,7 +37,6 @@ export default function ToobarAdmin() {
         variant="dense"
         className={classes.toolbarSecondary}
       >
-       
         <Link
           color="inherit"
           noWrap
@@ -58,5 +57,5 @@ export default function ToobarAdmin() {
         </Link>
       </Toolbar>
     </div>
-  );
+  )
 }

@@ -1,26 +1,26 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import { green } from "@material-ui/core/colors";
-import { Link } from "@material-ui/core";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import Avatar from '@material-ui/core/Avatar'
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'
+import { green } from '@material-ui/core/colors'
+import { Link } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: '100%',
 
     backgroundColor: theme.palette.background.paper,
   },
   imageItem: {
     padding: theme.spacing(2),
   },
-}));
+}))
 export default function ListModule({ topic, title, desc }) {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Link color="inherit" href="/LeaningDetail">
@@ -35,5 +35,5 @@ export default function ListModule({ topic, title, desc }) {
         </ListItem>
       </List>
     </Link>
-  );
+  )
 }

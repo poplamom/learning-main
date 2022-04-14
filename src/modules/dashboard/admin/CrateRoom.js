@@ -1,69 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Button, Typography, Grid, TextField } from "@material-ui/core";
-import ToobarAdmin from "./ToobarAdmin";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import axios from "axios";
-import swal from "sweetalert";
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Button, Typography, Grid, TextField } from '@material-ui/core'
+import ToobarAdmin from './ToobarAdmin'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import axios from 'axios'
+import swal from 'sweetalert'
 
 export default function CrateRoom() {
   const useStyles = makeStyles((theme) => ({
     titlepage: {
       padding: theme.spacing(3, 2),
-      color: "#fff",
-      background: "#000",
+      color: '#fff',
+      background: '#000',
     },
     input: {
-      display: "none",
+      display: 'none',
     },
     formCrate: {
-      justifyContent: "center",
-      textAlign: "center",
+      justifyContent: 'center',
+      textAlign: 'center',
 
-      "& div": {
+      '& div': {
         padding: theme.spacing(1),
       },
     },
     textField: {
-      width: "30em",
+      width: '30em',
     },
-  }));
-  const classes = useStyles();
-  const token = localStorage.getItem("accessToken");
-  const [name, setCourse] = useState();
-  const [desc, setDesc] = useState();
-  const [data, setData] = useState();
+  }))
+  const classes = useStyles()
+  const token = localStorage.getItem('accessToken')
+  const [name, setCourse] = useState()
+  const [desc, setDesc] = useState()
+  const [data, setData] = useState()
   const createRoom = async (e) => {
-    e.preventDefault();
-    console.log(token);
+    e.preventDefault()
+    console.log(token)
 
     const config = {
       headers: { Authorization: `Bearer ${token}` },
-    };
+    }
 
-    const bodyParameters = { name, desc };
+    const bodyParameters = { name, desc }
 
     await axios
-      .post("/api/v1/courses", bodyParameters, {
+      .post('/api/v1/courses', bodyParameters, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setData(response.data);
-        console.log(data);
-        swal("Success", "Create Success", "success", {
+        setData(response.data)
+        console.log(data)
+        swal('Success', 'Create Success', 'success', {
           buttons: false,
           timer: 1000,
         }).then((value) => {
           // localStorage.setItem("user", JSON.stringify(response["user"]));
-          window.location.href = "/adminprofile";
-        });
+          window.location.href = '/adminprofile'
+        })
       })
       .catch((error) => {
-        swal("Failed", "Email  duplicate", "error");
+        swal('Failed', 'Email  duplicate', 'error')
 
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
 
     // if ("course" in data) {
     //   swal("Success", "Create Course", "success", {
@@ -74,15 +74,13 @@ export default function CrateRoom() {
     // } else {
     //   swal("Failed", "Course name duoplicate ", "error");
     // }
-  };
+  }
   return (
     <div>
       <ToobarAdmin></ToobarAdmin>
       <div className={classes.titlepage}>
         <Typography variant="h4">Create Rooms</Typography>
-        <Typography variant="h6">
-          Create a room 
-        </Typography>
+        <Typography variant="h6">Create a room</Typography>
       </div>
 
       <Grid container className={classes.formCrate}>
@@ -130,5 +128,5 @@ export default function CrateRoom() {
         </form>
       </Grid>
     </div>
-  );
+  )
 }

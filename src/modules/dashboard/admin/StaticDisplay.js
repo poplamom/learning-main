@@ -1,66 +1,64 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import ToobarAdmin from "./ToobarAdmin";
-import GanaralSetting from "./GanaralSetting";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
-import Box from "@mui/material/Box";
-import PropTypes from "prop-types";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-import PersonIcon from '@mui/icons-material/Person';
-import Avatar from "@material-ui/core/Avatar";
+import React, { useState, useEffect } from 'react'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Toolbar from '@material-ui/core/Toolbar'
+import Grid from '@material-ui/core/Grid'
+import ToobarAdmin from './ToobarAdmin'
+import GanaralSetting from './GanaralSetting'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
+import Box from '@mui/material/Box'
+import PropTypes from 'prop-types'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
+import PersonIcon from '@mui/icons-material/Person'
+import Avatar from '@material-ui/core/Avatar'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useParams,
-} from "react-router-dom";
+} from 'react-router-dom'
 
-
-
-export default function StaticDisplay({username,course,user}) {
+export default function StaticDisplay({ username, course, user }) {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
     },
     titlepage: {
       padding: theme.spacing(2, 2),
-      color: "#fff",
-      background: "#000",
+      color: '#fff',
+      background: '#000',
     },
     updateRoom: {
-      padding: "2em 0",
+      padding: '2em 0',
     },
     leftBar: {},
     rightBar: {},
     linkSetting: {
-      textDecoration: "none",
+      textDecoration: 'none',
     },
-  }));
-  const classes = useStyles();
-  const token = localStorage.getItem("accessToken");
-  const [datas, setData] = useState([]);
-  const [datas2, setData2] = useState([]);
+  }))
+  const classes = useStyles()
+  const token = localStorage.getItem('accessToken')
+  const [datas, setData] = useState([])
+  const [datas2, setData2] = useState([])
 
-  const [courseId, setCourseId] = useState(course);
-  const [userId, setUserId] = useState(user);
+  const [courseId, setCourseId] = useState(course)
+  const [userId, setUserId] = useState(user)
 
-  var maxquetsion = 0;
-  var valueprocess = 0;
-  var calpersent;
+  var maxquetsion = 0
+  var valueprocess = 0
+  var calpersent
   function LinearProgressWithLabel(props) {
     return (
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Box sx={{ width: "100%", mr: 1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', mr: 1 }}>
           <LinearProgress variant="determinate" {...props} />
         </Box>
         <Box sx={{ minWidth: 40 }}>
@@ -69,16 +67,16 @@ export default function StaticDisplay({username,course,user}) {
           )}%`}</Typography>
         </Box>
       </Box>
-    );
+    )
   }
-  
+
   LinearProgressWithLabel.propTypes = {
     /**
      * The value of the progress indicator for the determinate and buffer variants.
      * Value between 0 and 100.
      */
     value: PropTypes.number.isRequired,
-  };
+  }
   const BorderLinearProgress = withStyles((theme) => ({
     root: {
       height: 10,
@@ -86,102 +84,101 @@ export default function StaticDisplay({username,course,user}) {
     },
     colorPrimary: {
       backgroundColor:
-        theme.palette.grey[theme.palette.type === "light" ? 200 : 700],
+        theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
     },
     bar: {
       borderRadius: 5,
-      backgroundColor: "#1a90ff",
+      backgroundColor: '#1a90ff',
     },
-  }))(LinearProgressWithLabel);
-  const bodyParameters = {  courseId, userId };
+  }))(LinearProgressWithLabel)
+  const bodyParameters = { courseId, userId }
 
   const countQuestion = async (e) => {
     await axios
-      .post("/api/v1/progressesdetail/couters2", bodyParameters, {
+      .post('/api/v1/progressesdetail/couters2', bodyParameters, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         if (response.data.counter === 0) {
-          setData(null);
+          setData(null)
         } else {
-          setData(response.data.counter);
+          setData(response.data.counter)
         }
-        console.log(response.data);
+        console.log(response.data)
 
         // window.location.reload();
       })
       .catch((error) => {
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
-  };
-  const bodyParameters2 = { courseId };
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
+  }
+  const bodyParameters2 = { courseId }
 
   const coutAllQuestion = async (e) => {
     await axios
-      .post("/api/v1/questions/couters", bodyParameters2, {
+      .post('/api/v1/questions/couters', bodyParameters2, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         if (response.data.counter === 0) {
-          setData2(null);
+          setData2(null)
         } else {
-          setData2(response.data.counter);
+          setData2(response.data.counter)
         }
         // console.log(response.data.counter);
 
         // window.location.reload();
       })
       .catch((error) => {
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
-  };
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
+  }
   useEffect(() => {
-    countQuestion();
-    coutAllQuestion();
+    countQuestion()
+    coutAllQuestion()
     // getUserEnroll();
-  }, []);
+  }, [])
   // console.log(datas)
   if (datas !== null) {
-    valueprocess = datas.length;
+    valueprocess = datas.length
   } else {
-    valueprocess = 0;
+    valueprocess = 0
   }
 
   if (datas2 !== null) {
-    maxquetsion = datas2.length;
+    maxquetsion = datas2.length
   } else {
-    maxquetsion = 0;
+    maxquetsion = 0
   }
 
-  console.log("value datas2 = "+datas2);
+  console.log('value datas2 = ' + datas2)
 
+  calpersent = Math.ceil((valueprocess * 100) / maxquetsion)
+  console.log('value process = ' + valueprocess)
+  console.log('value maxquetsion = ' + maxquetsion)
+  console.log('value calpersent = ' + calpersent)
 
-  calpersent = Math.ceil((valueprocess * 100) / maxquetsion);
-  console.log("value process = "+valueprocess);
-  console.log("value maxquetsion = "+maxquetsion);
-  console.log("value calpersent = "+calpersent);
-
-  var progressBar;
+  var progressBar
   if (calpersent > 0) {
-    progressBar = <BorderLinearProgress value={calpersent} />;
+    progressBar = <BorderLinearProgress value={calpersent} />
   } else if (calpersent === 0) {
-    progressBar = <BorderLinearProgress value={0} />;
+    progressBar = <BorderLinearProgress value={0} />
   } else {
-    progressBar = <BorderLinearProgress value={0} />;
+    progressBar = <BorderLinearProgress value={0} />
   }
   return (
     <div>
       <List className={classes.root}>
         <ListItem>
-          <ListItemAvatar> 
-              <PersonIcon color="primary" />
+          <ListItemAvatar>
+            <PersonIcon color="primary" />
           </ListItemAvatar>
           <ListItemText primary={username} />
         </ListItem>
         {progressBar}
       </List>
     </div>
-  );
+  )
 }

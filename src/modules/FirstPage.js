@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react'
 
-import MainFeaturedPost from "./MainFeaturedPost";
-
-
+import MainFeaturedPost from './MainFeaturedPost'
 
 const mainFeaturedPost = {
-  title: "Practicing and Learning System",
-  description:
-    "Practicing and Learning System",
-  image: "https://source.unsplash.com/random",
-  imgText: "main image description",
-  linkText: "Continue reading…",
-};
+  title: 'Practicing and Learning System',
+  description: 'Practicing and Learning System',
+  image: 'https://source.unsplash.com/random',
+  imgText: 'main image description',
+  linkText: 'Continue reading…',
+}
 
 export default function FirstPage() {
   return (
@@ -20,5 +17,5 @@ export default function FirstPage() {
         <MainFeaturedPost post={mainFeaturedPost} />
       </main>
     </>
-  );
+  )
 }

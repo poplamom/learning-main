@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 
-import Links from "@material-ui/core/Link";
-import Header from "../Header";
-import Mymodule from "./MyModule";
-import NewMudule from "./NewModule";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+import Links from '@material-ui/core/Link'
+import Header from '../Header'
+import Mymodule from './MyModule'
+import NewMudule from './NewModule'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   toolbarSecondary: {
-    background: "#000",
-    color: "#fff",
+    background: '#000',
+    color: '#fff',
     padding: theme.spacing(3, 2),
   },
   toolbarLink: {
@@ -31,37 +31,37 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 2),
   },
   btnSetting: {
-    textAlign: "center",
+    textAlign: 'center',
   },
-}));
+}))
 
 export default function UserPofile() {
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken')
 
-  const classes = useStyles();
+  const classes = useStyles()
   const [user, setUser] = useState(() => {
     // getting stored value
-    const saved = localStorage.getItem("user");
-    const initialValue = JSON.parse(saved);
+    const saved = localStorage.getItem('user')
+    const initialValue = JSON.parse(saved)
 
-    return initialValue || "";
-  });
-  const userId = user.id;
-  const [progress, setProgress] = useState([]);
+    return initialValue || ''
+  })
+  const userId = user.id
+  const [progress, setProgress] = useState([])
 
-  const [mycourse, setCourse] = useState([]);
-  const coursee = [];
-  var questionCount = [];
-  const [data, setData] = useState([]);
-var bodyParameters;
+  const [mycourse, setCourse] = useState([])
+  const coursee = []
+  var questionCount = []
+  const [data, setData] = useState([])
+  var bodyParameters
   const getCourse = async () => {
     const { data } = await axios.get(`/api/v1/progresses/mycourse/${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
-    });
+    })
 
-    setProgress(data.progresses);
+    setProgress(data.progresses)
     // setCourse(data.progresses.courseId);
-  };
+  }
   // console.log(progress);
   // program to loop through an object using for...in loop
 
@@ -89,31 +89,27 @@ var bodyParameters;
   // using for...in
 
   for (let key in progress) {
-    let i = 0;
-    let value;
+    let i = 0
+    let value
 
     // get the value
-    value = progress[key];
-    coursee.push(value.course[i]);
+    value = progress[key]
+    coursee.push(value.course[i])
     // console.log(value);
-    console.log("loop i =" + i);
-    
-   
+    console.log('loop i =' + i)
 
-
-
-    i++;
+    i++
   }
 
   // console.log(coursee)
   // console.log(progress)
 
   useEffect(() => {
-    getCourse();
-  }, []);
+    getCourse()
+  }, [])
   const courselist = (coursee || []).map((item, i) => {
-    return <Mymodule key={i} {...item} />;
-  });
+    return <Mymodule key={i} {...item} />
+  })
 
   return (
     <div className={classes.root}>
@@ -160,5 +156,5 @@ var bodyParameters;
         </Grid>
       </Grid>
     </div>
-  );
+  )
 }

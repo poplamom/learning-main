@@ -1,42 +1,42 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
     flex: 1,
   },
   btnheader: {
-    backgroundColor: "#66FCF1",
+    backgroundColor: '#66FCF1',
 
     marginLeft: theme.spacing(1),
-    "&:hover": {
-      backgroundColor: "#66FCf6",
+    '&:hover': {
+      backgroundColor: '#66FCf6',
     },
   },
   toolbars: {
-    backgroundColor: "#141414",
-    color: "#fff",
+    backgroundColor: '#141414',
+    color: '#fff',
     padding: theme.spacing(0, 2),
   },
   linkA: {
-    color: "#fff",
-    textDecoration: "none",
+    color: '#fff',
+    textDecoration: 'none',
   },
-}));
+}))
 
 export default function Header(props) {
-  const classes = useStyles();
-  const { title } = props;
-  const token = localStorage.getItem("accessToken");
-  const user = JSON.parse(localStorage.getItem("user"));
+  const classes = useStyles()
+  const { title } = props
+  const token = localStorage.getItem('accessToken')
+  const user = JSON.parse(localStorage.getItem('user'))
   const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("user");
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('user')
 
-    window.location.href = "/";
-  };
+    window.location.href = '/'
+  }
 
   if (!token) {
     return (
@@ -50,7 +50,7 @@ export default function Header(props) {
             className={classes.toolbarTitle}
           >
             <a href="/" className={classes.linkA}>
-              {title}{" "}
+              {title}{' '}
             </a>
           </Typography>
 
@@ -72,10 +72,10 @@ export default function Header(props) {
           </Button>
         </Toolbar>
       </React.Fragment>
-    );
+    )
   }
 
-  if (user.role === "Admin") {
+  if (user.role === 'Admin') {
     return (
       <>
         <Toolbar className={classes.toolbars}>
@@ -109,7 +109,7 @@ export default function Header(props) {
           </Button>
         </Toolbar>
       </>
-    );
+    )
   } else {
     return (
       <>
@@ -144,6 +144,6 @@ export default function Header(props) {
           </Button>
         </Toolbar>
       </>
-    );
+    )
   }
 }

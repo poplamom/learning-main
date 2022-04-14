@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { Grid, Button, TextField } from "@material-ui/core";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import QandA from "./QandA";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import { Grid, Button, TextField } from '@material-ui/core'
+import Accordion from '@material-ui/core/Accordion'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import QandA from './QandA'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 export default function TaskDetail() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,110 +16,110 @@ export default function TaskDetail() {
     },
     txtFilds: {
       margin: theme.spacing(1),
-      width: "70em",
+      width: '70em',
     },
     txtFildQandA: {
-      paddingRight: "3em",
-      width: "20em",
+      paddingRight: '3em',
+      width: '20em',
     },
     groupQandA: {
-      padding: "2em 0",
+      padding: '2em 0',
     },
     titlepage: {
       padding: theme.spacing(2, 2),
-      color: "#fff",
-      background: "#000",
+      color: '#fff',
+      background: '#000',
     },
     updateRoom: {
-      padding: "2em 0",
+      padding: '2em 0',
     },
     leftBar: {},
     rightBar: {},
     rootTask: {
-      margin: "1rem 0",
+      margin: '1rem 0',
     },
     headTask: {
-      width: "100%",
+      width: '100%',
     },
     contentTask: {
-      border: "1px solid #2f2f2f",
-      padding: "2rem",
+      border: '1px solid #2f2f2f',
+      padding: '2rem',
     },
     btnMachine: {
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     question: {
-      borderBottom: "1px solid #121212",
-      paddingBottom: "2em",
-      marginBottom: "2em",
+      borderBottom: '1px solid #121212',
+      paddingBottom: '2em',
+      marginBottom: '2em',
     },
     addbtn: {
-      textAlign: "right",
+      textAlign: 'right',
     },
-  }));
-  const classes = useStyles();
+  }))
+  const classes = useStyles()
 
-  const token = localStorage.getItem("accessToken");
-  const [tasks, setTasks] = useState([]);
-  const location = useLocation();
+  const token = localStorage.getItem('accessToken')
+  const [tasks, setTasks] = useState([])
+  const location = useLocation()
 
-  const { id } = location.state;
+  const { id } = location.state
 
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
-  const [objective, setObjective] = useState("");
-  const [courseId, setCourseId] = useState(id);
+  const [name, setName] = useState('')
+  const [desc, setDesc] = useState('')
+  const [objective, setObjective] = useState('')
+  const [courseId, setCourseId] = useState(id)
 
-  const [Qfields, setFields] = useState([]);
-  const [data, setData] = useState();
-  console.log(id);
+  const [Qfields, setFields] = useState([])
+  const [data, setData] = useState()
+  console.log(id)
   const createTask = async (e) => {
-    e.preventDefault();
-    console.log(token);
-    console.log(id);
+    e.preventDefault()
+    console.log(token)
+    console.log(id)
 
-    setCourseId(id);
+    setCourseId(id)
 
-    const bodyParameters = { name, desc, objective, courseId };
-    console.log(bodyParameters);
+    const bodyParameters = { name, desc, objective, courseId }
+    console.log(bodyParameters)
     await axios
-      .post("/api/v1/tasks", bodyParameters, {
+      .post('/api/v1/tasks', bodyParameters, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setData(response.data.task);
-        window.location.reload();
+        setData(response.data.task)
+        window.location.reload()
       })
       .catch((error) => {
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
-  };
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
+  }
 
   function handleChange(i, event) {
-    const values = [...Qfields];
-    values[i].value = event.target.value;
-    setFields(values);
+    const values = [...Qfields]
+    values[i].value = event.target.value
+    setFields(values)
   }
 
   function handleAdd() {
-    const values = [...Qfields];
-    values.push({ value: null });
-    setFields(values);
-    console.log(values);
+    const values = [...Qfields]
+    values.push({ value: null })
+    setFields(values)
+    console.log(values)
   }
 
   function handleRemove(i) {
-    const values = [...Qfields];
-    values.splice(i, 1);
-    setFields(values);
+    const values = [...Qfields]
+    values.splice(i, 1)
+    setFields(values)
   }
 
   const ListQuestion = Qfields.map((id) => {
-    if (Qfields.length > 0) return <QandA ></QandA>;
-    return <div></div>;
-  });
+    if (Qfields.length > 0) return <QandA></QandA>
+    return <div></div>
+  })
   return (
     <Grid container className={classes.rootTask} xl={12}>
       <Accordion className={classes.headTask}>
@@ -197,7 +197,7 @@ export default function TaskDetail() {
                     </Grid>
                   </Grid>
                   <Grid item xl={12}>
-                      {/* <QandA></QandA>
+                    {/* <QandA></QandA>
                       {ListQuestion} */}
                   </Grid>
                 </Grid>
@@ -208,5 +208,5 @@ export default function TaskDetail() {
         </AccordionDetails>
       </Accordion>
     </Grid>
-  );
+  )
 }

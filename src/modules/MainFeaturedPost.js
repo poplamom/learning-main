@@ -1,9 +1,9 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { LocalLibrary, Computer, CloudCircle } from "@material-ui/icons";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import { LocalLibrary, Computer, CloudCircle } from '@material-ui/icons'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -11,49 +11,49 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   mainFeaturedPost: {
-    position: "relative",
+    position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
     padding: 0,
     margin: 0,
   },
   overlay: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: "#000",
+    backgroundColor: '#000',
   },
   description: {
-    color: "#fff",
+    color: '#fff',
   },
   mainFeaturedPostContent: {
-    position: "relative",
+    position: 'relative',
     padding: theme.spacing(3),
-    [theme.breakpoints.up("xs")]: {
+    [theme.breakpoints.up('xs')]: {
       padding: theme.spacing(9),
       paddingRight: 0,
       paddingLeft: 0,
     },
-    textAlign: "center",
-    color: "#66FCF1",
+    textAlign: 'center',
+    color: '#66FCF1',
     marginBottom: theme.spacing(10),
     marginTop: theme.spacing(10),
   },
   featureicon: {
-    display: "flex",
-    color: "#fff",
-    justifyContent: "center",
-    direction: "row",
-    position: "relative",
-    alignItems: "center",
-    textAlign: "center",
-    [theme.breakpoints.up("sm")]: {
+    display: 'flex',
+    color: '#fff',
+    justifyContent: 'center',
+    direction: 'row',
+    position: 'relative',
+    alignItems: 'center',
+    textAlign: 'center',
+    [theme.breakpoints.up('sm')]: {
       paddingRight: theme.spacing(9),
       paddingLeft: theme.spacing(9),
       paddingBottom: theme.spacing(10),
@@ -63,27 +63,27 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 100,
   },
   textBottom: {
-    color: "#000",
-    justifyContent: "center",
-    direction: "row",
-    alignItems: "center",
+    color: '#000',
+    justifyContent: 'center',
+    direction: 'row',
+    alignItems: 'center',
 
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       paddingRight: theme.spacing(9),
       paddingLeft: theme.spacing(9),
       paddingBottom: theme.spacing(10),
     },
   },
   positonTextright: {
-    [theme.breakpoints.up("sm")]: {
-      textAlign: "right",
+    [theme.breakpoints.up('sm')]: {
+      textAlign: 'right',
     },
   },
-}));
+}))
 
 export default function MainFeaturedPost(props) {
-  const classes = useStyles();
-  const { post } = props;
+  const classes = useStyles()
+  const { post } = props
 
   return (
     <>
@@ -164,5 +164,5 @@ export default function MainFeaturedPost(props) {
         </Grid>
       </Grid>
     </>
-  );
+  )
 }

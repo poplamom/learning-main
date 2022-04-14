@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { Grid, Button, TextField } from "@material-ui/core";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import QandA from "./QandA";
-import axios from "axios";
-import ListQuestion from "./ListQuestion";
-import { useLocation } from "react-router-dom";
-import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import swal from "sweetalert";
+import React, { useState, useEffect } from 'react'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import { Grid, Button, TextField } from '@material-ui/core'
+import Accordion from '@material-ui/core/Accordion'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import QandA from './QandA'
+import axios from 'axios'
+import ListQuestion from './ListQuestion'
+import { useLocation } from 'react-router-dom'
+import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
+import swal from 'sweetalert'
 
 export default function TaskList({
   id,
@@ -29,102 +29,102 @@ export default function TaskList({
     },
     txtFilds: {
       margin: theme.spacing(1),
-      width: "70em",
+      width: '70em',
     },
     txtFildQandA: {
-      paddingRight: "3em",
-      width: "20em",
+      paddingRight: '3em',
+      width: '20em',
     },
     groupQandA: {
-      padding: "2em 0",
+      padding: '2em 0',
     },
     titlepage: {
       padding: theme.spacing(2, 2),
-      color: "#fff",
-      background: "#000",
+      color: '#fff',
+      background: '#000',
     },
     updateRoom: {
-      padding: "2em 0",
+      padding: '2em 0',
     },
     leftBar: {},
     rightBar: {},
     rootTask: {
-      margin: "1rem 0",
+      margin: '1rem 0',
     },
     headTask: {
-      width: "100%",
+      width: '100%',
     },
     contentTask: {
-      border: "1px solid #2f2f2f",
-      padding: "2rem",
+      border: '1px solid #2f2f2f',
+      padding: '2rem',
     },
     btnMachine: {
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     question: {
-      borderBottom: "1px solid #121212",
-      paddingBottom: "2em",
-      marginBottom: "2em",
+      borderBottom: '1px solid #121212',
+      paddingBottom: '2em',
+      marginBottom: '2em',
     },
     addbtn: {
-      textAlign: "right",
+      textAlign: 'right',
     },
     btnTask: {
-      marginRight: "0.5em",
+      marginRight: '0.5em',
     },
-  }));
-  const classes = useStyles();
+  }))
+  const classes = useStyles()
 
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken')
 
-  const [names, setName] = useState(name);
-  const [descs, setDesc] = useState(desc);
+  const [names, setName] = useState(name)
+  const [descs, setDesc] = useState(desc)
 
-  const [idtask, setIdtask] = useState();
-  const [idcourse, setIdcourse] = useState();
+  const [idtask, setIdtask] = useState()
+  const [idcourse, setIdcourse] = useState()
 
-  const [objectives, setObjective] = useState(objective);
-  const [statusTask, setStatusTask] = useState(status);
+  const [objectives, setObjective] = useState(objective)
+  const [statusTask, setStatusTask] = useState(status)
 
   // const [courseId, setCourseId] = useState(id);
-  const [quests, setQuest] = useState([]);
+  const [quests, setQuest] = useState([])
 
-  const [Qfield, setFields] = useState([]);
-  const [datas, setData] = useState([]);
-  const [disabledTask, setDisabledTask] = useState(true);
-  const [isDelQuest, setDelQuest] = useState(false);
-  const [disabledQuest, setDisabledQuest] = useState(true);
+  const [Qfield, setFields] = useState([])
+  const [datas, setData] = useState([])
+  const [disabledTask, setDisabledTask] = useState(true)
+  const [isDelQuest, setDelQuest] = useState(false)
+  const [disabledQuest, setDisabledQuest] = useState(true)
 
-  const [isAddQ, setAddQ] = useState(false);
-  console.log("id course" + idcourse);
+  const [isAddQ, setAddQ] = useState(false)
+  console.log('id course' + idcourse)
 
   useEffect(() => {
-    setIdtask(id);
+    setIdtask(id)
     // Get question each task by id task
     const getQuestion = async () => {
-      setQuest([]);
-      console.log("id task =" + id);
+      setQuest([])
+      console.log('id task =' + id)
       const { data } = await axios.get(`/api/v1/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
-      });
-      setQuest(data.task.question);
-      setIdcourse(data.task.course.id);
-    };
+      })
+      setQuest(data.task.question)
+      setIdcourse(data.task.course.id)
+    }
 
-    getQuestion();
-  }, [isDelete, isAddQ, isDelQuest, disabledQuest]);
+    getQuestion()
+  }, [isDelete, isAddQ, isDelQuest, disabledQuest])
   // list question
 
-  console.log(JSON.stringify(quests));
+  console.log(JSON.stringify(quests))
 
   // Update Task
   const updateTask = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // setCourseId(id);
 
-    const bodyParameters = { names, descs, objectives };
+    const bodyParameters = { names, descs, objectives }
 
     await axios
       .patch(
@@ -135,41 +135,41 @@ export default function TaskList({
         }
       )
       .then((response) => {
-        setData(response.data.task);
+        setData(response.data.task)
         // console.log(response);
         // console.log(response.data);
-        swal("Success", "Update Success", "success", {
+        swal('Success', 'Update Success', 'success', {
           buttons: false,
           timer: 1000,
         }).then((value) => {
-          console.log("UPDATE");
-          window.location.reload();
-        });
+          console.log('UPDATE')
+          window.location.reload()
+        })
       })
       .catch((error) => {
-        swal("Failed", "Error", "error");
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
-      });
-  };
+        swal('Failed', 'Error', 'error')
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
+      })
+  }
 
   function handleChange(i, event) {
-    const values = [...Qfield];
-    values[i].value = event.target.value;
-    setFields(values);
+    const values = [...Qfield]
+    values[i].value = event.target.value
+    setFields(values)
   }
 
   function handleAdd() {
-    const values = [...Qfield];
-    values.push({ value: null });
-    setFields(values);
-    console.log(values);
+    const values = [...Qfield]
+    values.push({ value: null })
+    setFields(values)
+    console.log(values)
   }
 
   function handleRemove(i) {
-    const values = [...Qfield];
-    values.splice(i, 1);
-    setFields(values);
+    const values = [...Qfield]
+    values.splice(i, 1)
+    setFields(values)
   }
 
   const AddQuestion = Qfield.map((id) => {
@@ -181,9 +181,9 @@ export default function TaskList({
           isAddQ={isAddQ}
           setAddQ={setAddQ}
         ></QandA>
-      );
-    return <div></div>;
-  });
+      )
+    return <div></div>
+  })
   const listQuest = (quests || []).map((item, i) => {
     return (
       <ListQuestion
@@ -194,45 +194,45 @@ export default function TaskList({
         setDisabledQuest={setDisabledQuest}
         disabledQuest={disabledQuest}
       />
-    );
-  });
+    )
+  })
 
   //Delete Task
   const fnDelete = async () => {
     try {
       const { data } = await axios.delete(`api/v1/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
-      });
-      setDelete(!isDelete);
-      console.log(isDelete);
+      })
+      setDelete(!isDelete)
+      console.log(isDelete)
     } catch (error) {
-      console.log(error.response.status); // 401
-      console.log(error.response.data.error);
+      console.log(error.response.status) // 401
+      console.log(error.response.data.error)
     }
-  };
+  }
 
   const confirmDelete = () => {
     swal({
-      title: "Are you sure delete?",
-      text: "You will delete this Task",
-      icon: "warning",
-      buttons: ["No", "Yes"],
+      title: 'Are you sure delete?',
+      text: 'You will delete this Task',
+      icon: 'warning',
+      buttons: ['No', 'Yes'],
       dangerMode: true,
     }).then(function (isConfirm) {
       if (isConfirm) {
-        fnDelete();
-        console.log(" Yes");
+        fnDelete()
+        console.log(' Yes')
       } else {
-        console.log(" No");
+        console.log(' No')
       }
-    });
-  };
+    })
+  }
   const editTask = () => {
-    setDisabledTask(false);
-  };
+    setDisabledTask(false)
+  }
   const cancleEditTask = () => {
-    setDisabledTask(true);
-  };
+    setDisabledTask(true)
+  }
   const BtnUpdatTask = () => {
     return (
       <>
@@ -253,8 +253,8 @@ export default function TaskList({
           Cancle
         </Button>
       </>
-    );
-  };
+    )
+  }
   const BtnEditTask = () => {
     return (
       <Button
@@ -265,8 +265,8 @@ export default function TaskList({
       >
         Edit Task
       </Button>
-    );
-  };
+    )
+  }
   return (
     <Grid container className={classes.rootTask} xl={12}>
       <Accordion className={classes.headTask}>
@@ -364,5 +364,5 @@ export default function TaskList({
         </AccordionDetails>
       </Accordion>
     </Grid>
-  );
+  )
 }

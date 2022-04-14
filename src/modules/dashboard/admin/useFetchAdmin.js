@@ -1,51 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import axios from "axios";
-const token = localStorage.getItem("accessToken");
+import axios from 'axios'
+const token = localStorage.getItem('accessToken')
 
 function useFetchAdminGet(url) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        setIsLoading(true);
+        setIsLoading(true)
 
         const { data } = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` },
-        });
-        setData(data);
-        setIsLoading(false);
+        })
+        setData(data)
+        setIsLoading(false)
       } catch (error) {
-        console.log(error.response.status); // 401
-        console.log(error.response.data.error);
+        console.log(error.response.status) // 401
+        console.log(error.response.data.error)
       }
-    };
-    fetchPosts();
-  }, [url]);
+    }
+    fetchPosts()
+  }, [url])
   return {
     data,
     isLoading,
-  };
+  }
 }
 
 function useFetchAdminPost(url) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+  const [data, setData] = useState([])
   useEffect(() => {
     const fetchPosts = async () => {
-      setIsLoading(true);
-      const { data } = await axios.get(url);
-      setData(data);
-      setIsLoading(false);
-    };
-    fetchPosts();
-  }, [url]);
+      setIsLoading(true)
+      const { data } = await axios.get(url)
+      setData(data)
+      setIsLoading(false)
+    }
+    fetchPosts()
+  }, [url])
   return {
     data,
     isLoading,
-  };
+  }
 }
 
-export default { useFetchAdminGet, useFetchAdminPost };
+export default { useFetchAdminGet, useFetchAdminPost }
