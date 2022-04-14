@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  Button,
-  Typography,
-  Grid,
-  TextField,
-  InputLabel,
-} from '@material-ui/core'
+import { Button, Typography, TextField, InputLabel } from '@material-ui/core'
 import Toolbar from '@material-ui/core/Toolbar'
-import Container from '@material-ui/core/Container'
-
 import Links from '@material-ui/core/Link'
-import Header from '../Header'
-import Mymodule from './MyModule'
-import NewMudule from './NewModule'
 import axios from 'axios'
 import swal from 'sweetalert'
-import { useLocation } from 'react-router-dom'
 
 export default function SettingProfile() {
   const useStyles = makeStyles((theme) => ({
@@ -52,15 +40,13 @@ export default function SettingProfile() {
   }))
 
   const token = localStorage.getItem('accessToken')
-
   const classes = useStyles()
   const [disabledBtn, setDisableBtn] = useState(false)
   const [datas, setData] = useState()
   const [names, setName] = useState('')
   const [password, setPass] = useState('')
   const [email, setEmail] = useState('')
-
-  const [user, setUser] = useState(() => {
+  const [user] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem('user')
     const initialValue = JSON.parse(saved)
@@ -98,9 +84,9 @@ export default function SettingProfile() {
   const Update = async (e) => {
     e.preventDefault()
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    }
+    // const config = {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // }
 
     const bodyParameters = { names, password, email }
     console.log(bodyParameters)
@@ -116,7 +102,7 @@ export default function SettingProfile() {
         setData(response.data)
         console.log(datas)
         swal('Success', 'Update Success', 'success', {
-          buttons: false,
+          // buttons: false,
           timer: 2000,
         }).then((value) => {
           console.log('UPDATE')

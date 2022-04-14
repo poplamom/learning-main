@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Toolbar from '@material-ui/core/Toolbar'
-import Grid from '@material-ui/core/Grid'
-import ToobarAdmin from './ToobarAdmin'
-import GanaralSetting from './GanaralSetting'
 import axios from 'axios'
-import { useLocation } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -14,16 +9,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import PersonIcon from '@mui/icons-material/Person'
-import Avatar from '@material-ui/core/Avatar'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
 
 export default function StaticDisplay({ username, course, user }) {
   const useStyles = makeStyles((theme) => ({
@@ -49,8 +35,8 @@ export default function StaticDisplay({ username, course, user }) {
   const [datas, setData] = useState([])
   const [datas2, setData2] = useState([])
 
-  const [courseId, setCourseId] = useState(course)
-  const [userId, setUserId] = useState(user)
+  const [courseId] = useState(course)
+  const [userId] = useState(user)
 
   var maxquetsion = 0
   var valueprocess = 0
@@ -62,7 +48,7 @@ export default function StaticDisplay({ username, course, user }) {
           <LinearProgress variant="determinate" {...props} />
         </Box>
         <Box sx={{ minWidth: 40 }}>
-          <Typography variant="body2" color="text.secondary">{`${Math.round(
+          <Typography variant="body2">{`${Math.round(
             props.value
           )}%`}</Typography>
         </Box>
@@ -77,20 +63,21 @@ export default function StaticDisplay({ username, course, user }) {
      */
     value: PropTypes.number.isRequired,
   }
-  const BorderLinearProgress = withStyles((theme) => ({
-    root: {
-      height: 10,
-      borderRadius: 5,
-    },
-    colorPrimary: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-    },
-    bar: {
-      borderRadius: 5,
-      backgroundColor: '#1a90ff',
-    },
-  }))(LinearProgressWithLabel)
+  // const BorderLinearProgress = withStyles((theme) => ({
+  //   root: {
+  //     height: 10,
+  //     borderRadius: 5,
+  //   },
+  //   colorPrimary: {
+  //     backgroundColor:
+  //       theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+  //   },
+  //   bar: {
+  //     borderRadius: 5,
+  //     backgroundColor: '#1a90ff',
+  //   },
+  // }))(LinearProgressWithLabel)
+
   const bodyParameters = { courseId, userId }
 
   const countQuestion = async (e) => {
@@ -162,11 +149,11 @@ export default function StaticDisplay({ username, course, user }) {
 
   var progressBar
   if (calpersent > 0) {
-    progressBar = <BorderLinearProgress value={calpersent} />
+    progressBar = <LinearProgressWithLabel value={calpersent} />
   } else if (calpersent === 0) {
-    progressBar = <BorderLinearProgress value={0} />
+    progressBar = <LinearProgressWithLabel value={0} />
   } else {
-    progressBar = <BorderLinearProgress value={0} />
+    progressBar = <LinearProgressWithLabel value={0} />
   }
   return (
     <div>

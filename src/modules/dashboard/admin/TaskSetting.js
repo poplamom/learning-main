@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { Grid, Button } from '@material-ui/core'
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ToobarAdmin from './ToobarAdmin'
 import TaskDetail from './TaskDetail'
 import TaskList from './TaskList'
 import axios from 'axios'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 export default function TaskSetting() {
   const useStyles = makeStyles((theme) => ({
@@ -68,11 +57,10 @@ export default function TaskSetting() {
   const location = useLocation()
   const token = localStorage.getItem('accessToken')
   const { id } = location.state
-
   const [tasks, setTasks] = useState([])
 
-  const [name, setName] = useState('')
-  const [desc, setDesc] = useState('')
+  // const [name, setName] = useState('')
+  // const [desc, setDesc] = useState('')
   const [isDelete, setDelete] = useState(false)
 
   useEffect(() => {
@@ -99,11 +87,11 @@ export default function TaskSetting() {
 
   const [fields, setFields] = useState([])
 
-  function handleChange(i, event) {
-    const values = [...fields]
-    values[i].value = event.target.value
-    setFields(values)
-  }
+  // function handleChange(i, event) {
+  //   const values = [...fields]
+  //   values[i].value = event.target.value
+  //   setFields(values)
+  // }
 
   function handleAdd() {
     const values = [...fields]
@@ -112,11 +100,11 @@ export default function TaskSetting() {
     console.log(values)
   }
 
-  function handleRemove(i) {
-    const values = [...fields]
-    values.splice(i, 1)
-    setFields(values)
-  }
+  // function handleRemove(i) {
+  //   const values = [...fields]
+  //   values.splice(i, 1)
+  //   setFields(values)
+  // }
 
   const AddTask = fields.map((idx) => {
     if (fields.length > 0) return <TaskDetail></TaskDetail>

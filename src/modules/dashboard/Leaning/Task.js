@@ -35,13 +35,13 @@ export default function Task({ no, name, desc, id }) {
 
   const token = localStorage.getItem('accessToken')
   const [question, setQuest] = useState([])
-  const [taskId, setTaskId] = useState(id)
-  const [questionall, setQuestall] = useState([])
+  const [taskId] = useState(id)
+  // const [questionall, setQuestall] = useState([])
   const [progressDetail, setProgressDetail] = useState([])
   const users = localStorage.getItem('user')
   const user = JSON.parse(users)
-  const [userId, setUserId] = useState(user.id)
-  const [updateQuestion, setupdateQuestion] = useState(false)
+  const [userId] = useState(user.id)
+  // const [updateQuestion, setupdateQuestion] = useState(false)
   const [statusQuestion, setStatusQuestion] = useState(false)
   const [courseId, setCourseId] = useState()
 

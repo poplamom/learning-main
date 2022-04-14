@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import { LocalLibrary, Computer, CloudCircle } from '@material-ui/icons'
+import { LocalLibrary, CloudCircle } from '@material-ui/icons'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     color: '#fff',
     justifyContent: 'center',
-    direction: 'row',
+    //   direction: 'row',
     position: 'relative',
     alignItems: 'center',
     textAlign: 'center',
@@ -65,9 +65,8 @@ const useStyles = makeStyles((theme) => ({
   textBottom: {
     color: '#000',
     justifyContent: 'center',
-    direction: 'row',
+    // direction: 'row',
     alignItems: 'center',
-
     [theme.breakpoints.up('sm')]: {
       paddingRight: theme.spacing(9),
       paddingLeft: theme.spacing(9),
@@ -144,7 +143,7 @@ export default function MainFeaturedPost(props) {
         <Grid item md={4} className={classes.positonTextright}>
           <LocalLibrary className={classes.icontsize}></LocalLibrary>
         </Grid>
-        <Grid item md={4} gutterBottom>
+        <Grid item md={4}>
           <LocalLibrary className={classes.icontsize}></LocalLibrary>
         </Grid>
         <Grid item md={7}>

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
-import ImageIcon from '@material-ui/icons/Image'
-import WorkIcon from '@material-ui/icons/Work'
-import BeachAccessIcon from '@material-ui/icons/BeachAccess'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import axios from 'axios'
@@ -15,13 +12,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import PropTypes from 'prop-types'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -36,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const mainFeaturedPost = {
-  title: 'Cyber security training',
-  description:
-    'Making it easier to break into security, all through your browser.',
-  image: 'https://source.unsplash.com/random',
-  imgText: 'main image description',
-  linkText: 'Continue reading…',
-}
+// const mainFeaturedPost = {
+//   title: 'Cyber security training',
+//   description:
+//     'Making it easier to break into security, all through your browser.',
+//   image: 'https://source.unsplash.com/random',
+//   imgText: 'main image description',
+//   linkText: 'Continue reading…',
+// }
 
 export default function MyModule({ id, name }) {
   const token = localStorage.getItem('accessToken')
@@ -51,7 +42,7 @@ export default function MyModule({ id, name }) {
   const [datas2, setData2] = useState([])
 
   const classes = useStyles()
-  const [user, setUser] = useState(() => {
+  const [user] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem('user')
     const initialValue = JSON.parse(saved)
@@ -85,20 +76,6 @@ export default function MyModule({ id, name }) {
      */
     value: PropTypes.number.isRequired,
   }
-  const BorderLinearProgress = withStyles((theme) => ({
-    root: {
-      height: 10,
-      borderRadius: 5,
-    },
-    colorPrimary: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-    },
-    bar: {
-      borderRadius: 5,
-      backgroundColor: '#1a90ff',
-    },
-  }))(LinearProgressWithLabel)
 
   const bodyParameters = { userId, id }
 
@@ -113,13 +90,13 @@ export default function MyModule({ id, name }) {
         } else {
           setData(response.data.counter)
         }
-        console.log(response.data)
+        // console.log(response.data)
 
         // window.location.reload();
       })
       .catch((error) => {
-        console.log(error.response.status) // 401
-        console.log(error.response.data.error)
+        // console.log(error.response.status) // 401
+        // console.log(error.response.data.error)
       })
   }
   const bodyParameters2 = { courseId }
@@ -140,8 +117,8 @@ export default function MyModule({ id, name }) {
         // window.location.reload();
       })
       .catch((error) => {
-        console.log(error.response.status) // 401
-        console.log(error.response.data.error)
+        // console.log(error.response.status) // 401
+        // console.log(error.response.data.error)
       })
   }
   useEffect(() => {
@@ -150,14 +127,14 @@ export default function MyModule({ id, name }) {
   }, [])
 
   if (datas !== null) {
-    console.log(datas.length)
+    // console.log(datas.length)
     valueprocess = datas.length
   } else {
     valueprocess = 0
   }
 
   if (datas2 !== null) {
-    console.log(datas2.length)
+    // console.log(datas2.length)
     maxquetsion = datas2.length
   } else {
     valueprocess = 0
@@ -165,11 +142,11 @@ export default function MyModule({ id, name }) {
   calpersent = Math.ceil((valueprocess * 100) / maxquetsion)
   var progressBar
   if (calpersent > 0) {
-    progressBar = <BorderLinearProgress value={calpersent} />
+    progressBar = <LinearProgressWithLabel value={calpersent} />
   } else if (calpersent === 0) {
-    progressBar = <BorderLinearProgress value={0} />
+    progressBar = <LinearProgressWithLabel value={0} />
   } else {
-    progressBar = <BorderLinearProgress value={0} />
+    progressBar = <LinearProgressWithLabel value={0} />
   }
   return (
     <div className={classes.allList}>

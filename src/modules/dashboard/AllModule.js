@@ -3,12 +3,10 @@ import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import Toolbar from '@material-ui/core/Toolbar'
 import Links from '@material-ui/core/Link'
-
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-
 import ModuleItem from './ModuleItem'
-import network from 'assets/images/network.png'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -36,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MyModule() {
   const classes = useStyles()
-  const users = localStorage.getItem('user')
+  // const users = localStorage.getItem('user')
   const [updateEnroll, setupdateEnroll] = useState(false)
 
   const [course, setCourse] = useState([])
   const [progress, setProgress] = useState([])
   const token = localStorage.getItem('accessToken')
 
-  const [user, setUser] = useState(() => {
+  const [user] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem('user')
     const initialValue = JSON.parse(saved)

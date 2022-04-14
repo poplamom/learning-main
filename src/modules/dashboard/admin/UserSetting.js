@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import ToobarAdmin from './ToobarAdmin'
-import Button from '@material-ui/core/Button'
 import Userlist from './Userlist'
 import axios from 'axios'
 export default function UserSetting() {

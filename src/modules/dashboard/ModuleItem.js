@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Button } from '@material-ui/core'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
 import axios from 'axios'
@@ -41,13 +35,13 @@ export default function ModuleItem({
   // const { titleModule, descModule, imageModule } = dataitem;
 
   const token = localStorage.getItem('accessToken')
-  const users = localStorage.getItem('user')
-  const location = useLocation()
+  // const users = localStorage.getItem('user')
+  // const location = useLocation()
 
-  const [courseId, setCourseId] = useState(id)
+  const [courseId] = useState(id)
   const [data, setData] = useState()
-  const [datauser, setDatauser] = useState('')
-  const [user, setUser] = useState(() => {
+  // const [datauser, setDatauser] = useState('')
+  const [user] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem('user')
     const initialValue = JSON.parse(saved)

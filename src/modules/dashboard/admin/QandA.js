@@ -1,9 +1,8 @@
 import { Grid, Button, TextField } from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 export default function QandA({ idcourse, idtask, isAddQ, setAddQ }) {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,13 +32,13 @@ export default function QandA({ idcourse, idtask, isAddQ, setAddQ }) {
   const classes = useStyles()
 
   const token = localStorage.getItem('accessToken')
-  const location = useLocation()
+  // const location = useLocation()
   // const { id } = location.state;
-  const [data, setData] = useState()
+  // const [data, setData] = useState()
   const [datatask, setDataTask] = useState()
 
   const [taskID, setTaskId] = useState(idtask)
-  const [courseID, setCourseId] = useState(idcourse)
+  const [courseID] = useState(idcourse)
 
   const [name, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')

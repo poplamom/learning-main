@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { Grid, Button, TextField } from '@material-ui/core'
 import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import QandA from './QandA'
+// import QandA from './QandA'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 export default function TaskDetail() {
@@ -61,7 +61,7 @@ export default function TaskDetail() {
   const classes = useStyles()
 
   const token = localStorage.getItem('accessToken')
-  const [tasks, setTasks] = useState([])
+  // const [tasks, setTasks] = useState([])
   const location = useLocation()
 
   const { id } = location.state
@@ -97,11 +97,11 @@ export default function TaskDetail() {
       })
   }
 
-  function handleChange(i, event) {
-    const values = [...Qfields]
-    values[i].value = event.target.value
-    setFields(values)
-  }
+  // function handleChange(i, event) {
+  //   const values = [...Qfields]
+  //   values[i].value = event.target.value
+  //   setFields(values)
+  // }
 
   function handleAdd() {
     const values = [...Qfields]
@@ -110,16 +110,16 @@ export default function TaskDetail() {
     console.log(values)
   }
 
-  function handleRemove(i) {
-    const values = [...Qfields]
-    values.splice(i, 1)
-    setFields(values)
-  }
+  // function handleRemove(i) {
+  //   const values = [...Qfields]
+  //   values.splice(i, 1)
+  //   setFields(values)
+  // }
 
-  const ListQuestion = Qfields.map((id) => {
-    if (Qfields.length > 0) return <QandA></QandA>
-    return <div></div>
-  })
+  // const ListQuestion = Qfields.map((id) => {
+  //   if (Qfields.length > 0) return <QandA></QandA>
+  //   return <div></div>
+  // })
   return (
     <Grid container className={classes.rootTask} xl={12}>
       <Accordion className={classes.headTask}>

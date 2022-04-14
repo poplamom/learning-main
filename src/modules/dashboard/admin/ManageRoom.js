@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Toolbar from '@material-ui/core/Toolbar'
-import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
-
 import Button from '@material-ui/core/Button'
 import ListRoom from './ListRoom'
 import axios from 'axios'
@@ -28,7 +23,7 @@ export default function ManageRoom() {
 
   const [course, setCourse] = useState([])
   const token = localStorage.getItem('accessToken')
-  const [cCount, setCount] = useState(0)
+  // const [cCount, setCount] = useState(0)
   const [isDeletes, setDeletes] = useState(false)
 
   useEffect(() => {

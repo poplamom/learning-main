@@ -5,9 +5,6 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
-import ImageIcon from '@material-ui/icons/Image'
-import WorkIcon from '@material-ui/icons/Work'
-import BeachAccessIcon from '@material-ui/icons/BeachAccess'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import axios from 'axios'
@@ -15,13 +12,6 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import PropTypes from 'prop-types'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -35,15 +25,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2, 0),
   },
 }))
-
-const mainFeaturedPost = {
-  title: 'Cyber security training',
-  description:
-    'Making it easier to break into security, all through your browser.',
-  image: 'https://source.unsplash.com/random',
-  imgText: 'main image description',
-  linkText: 'Continue reading…',
-}
 
 export default function UserModule({ userid, id, name }) {
   const token = localStorage.getItem('accessToken')
@@ -79,20 +60,20 @@ export default function UserModule({ userid, id, name }) {
      */
     value: PropTypes.number.isRequired,
   }
-  const BorderLinearProgress = withStyles((theme) => ({
-    root: {
-      height: 10,
-      borderRadius: 5,
-    },
-    colorPrimary: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-    },
-    bar: {
-      borderRadius: 5,
-      backgroundColor: '#1a90ff',
-    },
-  }))(LinearProgressWithLabel)
+  // const BorderLinearProgress = withStyles((theme) => ({
+  //   root: {
+  //     height: 10,
+  //     borderRadius: 5,
+  //   },
+  //   colorPrimary: {
+  //     backgroundColor:
+  //       theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+  //   },
+  //   bar: {
+  //     borderRadius: 5,
+  //     backgroundColor: '#1a90ff',
+  //   },
+  // }))(LinearProgressWithLabel)
 
   const bodyParameters = { userId, id }
 
@@ -163,11 +144,11 @@ export default function UserModule({ userid, id, name }) {
 
   var progressBar
   if (calpersent > 0) {
-    progressBar = <BorderLinearProgress value={calpersent} />
+    progressBar = <LinearProgressWithLabel value={calpersent} />
   } else if (calpersent === 0) {
-    progressBar = <BorderLinearProgress value={0} />
+    progressBar = <LinearProgressWithLabel value={0} />
   } else {
-    progressBar = <BorderLinearProgress value={0} />
+    progressBar = <LinearProgressWithLabel value={0} />
   }
   return (
     <div className={classes.allList}>

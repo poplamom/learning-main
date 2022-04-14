@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Grid, Button, TextField } from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import swal from 'sweetalert'
-import { BorderBottom } from '@material-ui/icons'
 
 export default function ListQuestion({
   id,
@@ -47,7 +45,7 @@ export default function ListQuestion({
   }))
   const classes = useStyles()
   const token = localStorage.getItem('accessToken')
-  const [quests, setQuest] = useState([])
+  // const [quests, setQuest] = useState([])
 
   const [Qnames, setQName] = useState(name)
   const [Qhint, setQHint] = useState(hint)
@@ -56,7 +54,7 @@ export default function ListQuestion({
 
   const [disabledQuests, setDisabledQuests] = useState(true)
 
-  const [Qfield, setQFields] = useState([])
+  // const [Qfield, setQFields] = useState([])
   const [data, setData] = useState()
 
   const updateQuest = async (e) => {
@@ -79,7 +77,7 @@ export default function ListQuestion({
         // console.log(response);
         // console.log(response.data) ;
         swal('Success', 'Update Success', 'success', {
-          buttons: false,
+          // buttons: false,
           timer: 2000,
         }).then((value) => {
           console.log('UPDATE')

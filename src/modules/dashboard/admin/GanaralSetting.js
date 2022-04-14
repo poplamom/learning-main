@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  Button,
-  Typography,
-  Grid,
-  TextField,
-  InputLabel,
-} from '@material-ui/core'
+import { Button, TextField, InputLabel } from '@material-ui/core'
 import axios from 'axios'
 import swal from 'sweetalert'
 
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 export default function GanaralSetting({ id, name, desc, tasks }) {
   const useStyles = makeStyles((theme) => ({
     titlepage: {
@@ -65,9 +58,9 @@ export default function GanaralSetting({ id, name, desc, tasks }) {
     e.preventDefault()
     console.log(token)
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    }
+    // const config = {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // }
 
     const bodyParameters = { names, descs }
     console.log(bodyParameters)
@@ -83,7 +76,7 @@ export default function GanaralSetting({ id, name, desc, tasks }) {
         setData(response.data)
         console.log(datas)
         swal('Success', 'Update Success', 'success', {
-          buttons: false,
+          // buttons: false,
           timer: 2000,
         }).then((value) => {
           console.log('UPDATE')

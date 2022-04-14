@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { Grid, Button } from '@material-ui/core'
-import LinearProgress from '@material-ui/core/LinearProgress'
+// import LinearProgress from '@material-ui/core/LinearProgress'
 import Task from './Task'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 
 import { useHistory } from 'react-router-dom'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
 export default function LeaningDetail() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -56,13 +49,13 @@ export default function LeaningDetail() {
 
   const location = useLocation()
   const token = localStorage.getItem('accessToken')
-  const { id } = location.state
+  const id = location.state
   const [tasks, setTasks] = useState([])
   const [course, setCourse] = useState([])
 
-  const [name, setName] = useState('')
-  const [desc, setDesc] = useState('')
-  const [isDelete, setDelete] = useState(false)
+  // const [name, setName] = useState('')
+  // const [desc, setDesc] = useState('')
+  const [isDelete] = useState(false)
 
   useEffect(() => {
     const getTask = async () => {
@@ -76,21 +69,6 @@ export default function LeaningDetail() {
 
     getTask()
   }, [isDelete])
-
-  const BorderLinearProgress = withStyles((theme) => ({
-    root: {
-      height: 10,
-      borderRadius: 5,
-    },
-    colorPrimary: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-    },
-    bar: {
-      borderRadius: 5,
-      backgroundColor: '#1a90ff',
-    },
-  }))(LinearProgress)
 
   const taskList = (tasks || []).map((data, id) => (
     <Task key={id} no={id + 1} {...data} />

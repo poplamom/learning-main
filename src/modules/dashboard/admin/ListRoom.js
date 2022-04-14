@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import Avatar from '@material-ui/core/Avatar'
-import ImageIcon from '@material-ui/icons/Image'
 import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import swal from 'sweetalert'
 import axios from 'axios'
 export default function ListRoom({ id, name, desc, isDeletes, setDeletes }) {

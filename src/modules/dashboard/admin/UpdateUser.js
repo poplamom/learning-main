@@ -5,12 +5,10 @@ import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import ToobarAdmin from './ToobarAdmin'
 import { useLocation } from 'react-router-dom'
-import Avatar from '@material-ui/core/Avatar'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
 import axios from 'axios'
 import swal from 'sweetalert'
 import UserModule from './UserModule'
@@ -139,7 +137,7 @@ export default function UpdateUser() {
         setDisabledUser(true)
 
         swal('Success', 'Update Success', 'success', {
-          buttons: false,
+          // buttons: false,
           timer: 1000,
         }).then((value) => {
           console.log('UPDATE')

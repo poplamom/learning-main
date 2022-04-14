@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { Grid, Button, TextField } from '@material-ui/core'
 import Accordion from '@material-ui/core/Accordion'
@@ -9,7 +9,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import QandA from './QandA'
 import axios from 'axios'
 import ListQuestion from './ListQuestion'
-import { useLocation } from 'react-router-dom'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
 import swal from 'sweetalert'
 
@@ -85,7 +84,7 @@ export default function TaskList({
   const [idcourse, setIdcourse] = useState()
 
   const [objectives, setObjective] = useState(objective)
-  const [statusTask, setStatusTask] = useState(status)
+  // const [statusTask, setStatusTask] = useState(status)
 
   // const [courseId, setCourseId] = useState(id);
   const [quests, setQuest] = useState([])
@@ -124,7 +123,7 @@ export default function TaskList({
 
     // setCourseId(id);
 
-    const bodyParameters = { names, descs, objectives }
+    // const bodyParameters = { names, descs, objectives }
 
     await axios
       .patch(
@@ -139,7 +138,7 @@ export default function TaskList({
         // console.log(response);
         // console.log(response.data);
         swal('Success', 'Update Success', 'success', {
-          buttons: false,
+          // buttons: false,
           timer: 1000,
         }).then((value) => {
           console.log('UPDATE')
@@ -153,11 +152,11 @@ export default function TaskList({
       })
   }
 
-  function handleChange(i, event) {
-    const values = [...Qfield]
-    values[i].value = event.target.value
-    setFields(values)
-  }
+  // function handleChange(i, event) {
+  //   const values = [...Qfield]
+  //   values[i].value = event.target.value
+  //   setFields(values)
+  // }
 
   function handleAdd() {
     const values = [...Qfield]
@@ -166,11 +165,11 @@ export default function TaskList({
     console.log(values)
   }
 
-  function handleRemove(i) {
-    const values = [...Qfield]
-    values.splice(i, 1)
-    setFields(values)
-  }
+  // function handleRemove(i) {
+  //   const values = [...Qfield]
+  //   values.splice(i, 1)
+  //   setFields(values)
+  // }
 
   const AddQuestion = Qfield.map((id) => {
     if (Qfield.length > 0)

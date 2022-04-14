@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, Typography, Grid, TextField } from '@material-ui/core'
 import ToobarAdmin from './ToobarAdmin'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import axios from 'axios'
 import swal from 'sweetalert'
 
@@ -30,16 +29,16 @@ export default function CrateRoom() {
   }))
   const classes = useStyles()
   const token = localStorage.getItem('accessToken')
-  const [name, setCourse] = useState()
-  const [desc, setDesc] = useState()
-  const [data, setData] = useState()
+  const [name, setCourse] = useState('')
+  const [desc, setDesc] = useState('')
+  const [data, setData] = useState('')
   const createRoom = async (e) => {
     e.preventDefault()
     console.log(token)
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    }
+    // const config = {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // }
 
     const bodyParameters = { name, desc }
 
@@ -51,7 +50,7 @@ export default function CrateRoom() {
         setData(response.data)
         console.log(data)
         swal('Success', 'Create Success', 'success', {
-          buttons: false,
+          // buttons: false,
           timer: 1000,
         }).then((value) => {
           // localStorage.setItem("user", JSON.stringify(response["user"]));
@@ -64,16 +63,6 @@ export default function CrateRoom() {
         console.log(error.response.status) // 401
         console.log(error.response.data.error)
       })
-
-    // if ("course" in data) {
-    //   swal("Success", "Create Course", "success", {
-    //     buttons: false,
-    //     timer: 2000,
-    //   });
-    //   console.log(data);
-    // } else {
-    //   swal("Failed", "Course name duoplicate ", "error");
-    // }
   }
   return (
     <div>

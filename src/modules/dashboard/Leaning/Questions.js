@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import { Grid, Button, Input, TextField } from '@material-ui/core'
+import { Grid, Button, TextField } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -10,8 +10,6 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import axios from 'axios'
 import swal from 'sweetalert'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
-
-import { useLocation } from 'react-router-dom'
 
 export default function Questions({
   id,
@@ -47,12 +45,12 @@ export default function Questions({
 
   const [result, setResults] = useState()
   const [answer, setAnswer] = useState('')
-  const [taskId, setTaskId] = useState(taskIds)
-  const [userId, setUserId] = useState(user.id)
+  const [taskId] = useState(taskIds)
+  const [userId] = useState(user.id)
 
   const [open, setOpen] = useState(false)
   // const [statusQuestion, setStatusQuestion] = useState(updateQuestion);
-  const [statusq, setstatusq] = useState(statusQ)
+  // const [statusq, setstatusq] = useState(statusQ)
 
   const handleClickOpen = () => {
     swal({
@@ -158,61 +156,4 @@ export default function Questions({
       </Grid>
     </Grid>
   )
-
-  // const hasAnswer = () => {
-
-  //   return (
-  //     <Grid container>
-  //       <Grid item container xl={12}>
-  //         <Grid item xl={10}>
-
-  //             <Typography variant="subtitle1" component="h2" gutterBottom>
-  //               <b>Questions : </b>{name}
-  //             </Typography>
-
-  //             {/* <TextField
-  //               id="standard-basic"
-  //               label="Answer"
-  //               value={answer}
-  //               onChange={(e) => setAnswer(e.target.value)}
-  //             /> */}
-  //          </Grid>
-
-  //             {/* <Grid item container xl={2} className={classes.btnAns}>
-  //               <Button variant="outlined" onClick={handleClickOpen}>
-  //                 Hint
-  //               </Button>
-
-  //               <Dialog
-  //                 open={open}
-  //                 onClose={handleClose}
-  //                 aria-labelledby="alert-dialog-title"
-  //                 aria-describedby="alert-dialog-description"
-  //               >
-  //                 <DialogTitle id="alert-dialog-title">{"HINT"}</DialogTitle>
-  //                 <DialogContent>
-  //                   <DialogContentText id="alert-dialog-description">
-  //                     {hint}
-  //                   </DialogContentText>
-  //                 </DialogContent>
-  //                 <DialogActions>
-  //                   <Button onClick={handleClose} color="primary">
-  //                     close
-  //                   </Button>
-  //                 </DialogActions>
-  //               </Dialog>
-
-  //             <Button
-  //               variant="contained"
-  //               color="secondary"
-
-  //               onClick={sendAns}
-  //             >
-  //               Submit
-  //             </Button>
-  //             </Grid> */}
-  //       </Grid>
-  //     </Grid>
-  //   );
-  // }
 }

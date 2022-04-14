@@ -19,50 +19,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ModuleDetail() {
   const classes = useStyles()
-  // const knowlearn = {
-  //   titleModule: "Cyber security training",
-  //   descModule:
-  //     "Making it easier to break into security, all through your browser.",
-  //   imageModule: network,
-  // };
-  // const nextlearn = {
-  //   titleModule: "Cyber security training",
-  //   descModule:
-  //     "Making it easier to break into security, all through your browser.",
-  //   imageModule: network,
-  // };
-
-  // const lessonItem = [
-  //   {
-  //     topic: "http",
-  //     title: "Web Fundamentals",
-  //     desc: "Learn how the web works",
-  //   },
-  //   {
-  //     topic: "OWASP",
-  //     title: "OWASP Top 10",
-  //     desc: "Learn about and exploit each of the OWASP Top 10 vulnerabilities; the 10 most critical web security risks.",
-  //   },
-  //   {
-  //     topic: "http",
-  //     title: "Web Fundamentals",
-  //     desc: "Learn how the web works",
-  //   },
-  //   {
-  //     topic: "OWASP",
-  //     title: "OWASP Top 10",
-  //     desc: "Learn about and exploit each of the OWASP Top 10 vulnerabilities; the 10 most critical web security risks.",
-  //   },
-  // ];
-
   const location = useLocation()
   const token = localStorage.getItem('accessToken')
-  const { id } = location.state
+  const id = location.state
   const [tasks, setTasks] = useState([])
 
-  const [name, setName] = useState('')
-  const [desc, setDesc] = useState('')
-  const [isDelete, setDelete] = useState(false)
+  // const [name, setName] = useState('')
+  // const [desc, setDesc] = useState('')
+  const [isDelete] = useState(false)
 
   useEffect(() => {
     const getTask = async () => {

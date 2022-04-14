@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Toolbar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
 import ToobarAdmin from './ToobarAdmin'
 import GanaralSetting from './GanaralSetting'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 export default function UpdateRoom() {
   const useStyles = makeStyles((theme) => ({
     root: {
