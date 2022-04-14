@@ -45,6 +45,8 @@ export default function SettingProfile() {
   const [datas, setData] = useState()
   const [names, setName] = useState('')
   const [password, setPass] = useState('')
+  const [newPassword, setNewPass] = useState('')
+  const [role, setRole] = useState('')
   const [email, setEmail] = useState('')
   const [user] = useState(() => {
     // getting stored value
@@ -57,13 +59,14 @@ export default function SettingProfile() {
 
   const getProfile = async () => {
     await axios
-      .get(`/api/v1/users/${id}`, {
+      .get(`/api/v1/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setData(response.data)
         setName(response.data.user.name)
         setEmail(response.data.user.email)
+        setRole(response.data.user.role)
 
         console.log(response.data)
         setDisableBtn(!disabledBtn)
@@ -92,7 +95,7 @@ export default function SettingProfile() {
     console.log(bodyParameters)
     await axios
       .patch(
-        `/api/v1/users/${id}`,
+        `/api/v1/auth/profile`,
         { name: names, password: password, email: email },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -199,13 +202,36 @@ export default function SettingProfile() {
             />
           </div>
           <div>
-            <InputLabel htmlFor="Passsword">Passsword</InputLabel>
+            <InputLabel htmlFor="Passsword">Current Passsword</InputLabel>
             <TextField
               id="Passsword"
               variant="outlined"
               value={password}
               type="password"
               onChange={(e) => setPass(e.target.value)}
+              disabled={disabledBtn}
+              className={classes.textField}
+            />
+          </div>
+          <div>
+            <InputLabel htmlFor="Newpassword">New Passsword</InputLabel>
+            <TextField
+              id="Newpassword"
+              variant="outlined"
+              value={newPassword}
+              type="password"
+              onChange={(e) => setNewPass(e.target.value)}
+              disabled={disabledBtn}
+              className={classes.textField}
+            />
+          </div>
+          <div>
+            <InputLabel htmlFor="Role">Role</InputLabel>
+            <TextField
+              id="Role"
+              variant="outlined"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
               disabled={disabledBtn}
               className={classes.textField}
             />

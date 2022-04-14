@@ -134,9 +134,9 @@ export default function MainFeaturedPost(props) {
             Byte-sized gamified lessons
           </Typography>
           <Typography>
-            Learning cybersecurity on TryHack is fun and addictive. Earn points
-            by answering questions, taking on challenges and maintain your
-            hacking streak through short lessons.
+            Learning cybersecurity on Practicing and Learning System is fun and
+            addictive. Earn points by answering questions, taking on challenges
+            and maintain your hacking streak through short lessons.
           </Typography>
         </Grid>
 

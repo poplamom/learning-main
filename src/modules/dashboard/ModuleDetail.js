@@ -21,7 +21,7 @@ export default function ModuleDetail() {
   const classes = useStyles()
   const location = useLocation()
   const token = localStorage.getItem('accessToken')
-  const id = location.state
+  const { id } = location.state
   const [tasks, setTasks] = useState([])
 
   // const [name, setName] = useState('')

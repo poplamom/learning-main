@@ -49,7 +49,7 @@ export default function LeaningDetail() {
 
   const location = useLocation()
   const token = localStorage.getItem('accessToken')
-  const id = location.state
+  const { id } = location.state
   const [tasks, setTasks] = useState([])
   const [course, setCourse] = useState([])
 
