@@ -51,7 +51,7 @@ export default function ToobarAdmin() {
           href="/usersetting"
           className={classes.toolbarLink}
         >
-          User
+          User Management
         </Link>
       </Toolbar>
     </div>
