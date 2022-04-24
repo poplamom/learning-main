@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     bottom: '0',
     width: '100%',
     maxWidth: '1280px',
-    position: 'fixed',
   },
 }))
 export default function Footer() {

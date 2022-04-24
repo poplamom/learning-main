@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
   mainGrid: {
     padding: 0,
     minHeight: '100%',
-    marginBottom: '1em',
   },
 }))
 export default function Layout() {
