@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import ToobarAdmin from './ToobarAdmin'
 import Userlist from './Userlist'
 import axios from 'axios'
+import AddUser from './AddUser'
 export default function UserSetting() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,6 +54,9 @@ export default function UserSetting() {
       <div className={classes.titlepage}>
         <Typography variant="h4">Setting User</Typography>
         <Typography variant="h6">update user account</Typography>
+      </div>
+      <div>
+        <AddUser></AddUser>
       </div>
       <Grid container>
         <Grid container item xl={12}>

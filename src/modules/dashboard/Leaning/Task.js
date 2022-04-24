@@ -54,6 +54,7 @@ export default function Task({ no, name, desc, id }) {
   //   console.log(data);
 
   // };
+
   const getProgressDetail = async () => {
     const { data } = await axios.get(`/api/v1/progressesdetail/${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -78,26 +79,27 @@ export default function Task({ no, name, desc, id }) {
   }, [statusQuestion])
 
   const questionlist = (question || []).map((item, i) => {
-    var cc = item.id
+    var idQuestion = item.id
 
     var statusQ
-    const aa = (progressDetail || []).map((item2, j) => {
+    const processes = (progressDetail || []).map((item2, j) => {
       console.log(item2)
 
-      if (item2.questionId === cc) {
+      if (item2.questionId === idQuestion) {
         return true
       } else {
         return false
       }
     })
 
-    if (aa.includes(true)) {
+    if (processes.includes(true)) {
       statusQ = true
     } else {
       statusQ = false
     }
-    console.log('task qution id.' + cc)
-    console.log('loop ' + cc + ' have ' + statusQ)
+
+    console.log('task question id.' + idQuestion)
+    console.log('loop ' + idQuestion + ' have ' + statusQ)
 
     return (
       <Questions
