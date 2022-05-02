@@ -128,7 +128,8 @@ export default function TaskList({
     await axios
       .patch(
         `/api/v1/tasks/${id}`,
-        { name: names, desc: descs, objective: objectives },
+        // { name: names, desc: descs, objective: objectives },
+        { name: names, desc: descs },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -311,7 +312,7 @@ export default function TaskList({
                       onChange={(e) => setDesc(e.target.value)}
                     />
                   </div>
-                  <div>
+                  {/* <div>
                     <TextField
                       className={classes.txtFilds}
                       id="objective"
@@ -321,7 +322,7 @@ export default function TaskList({
                       disabled={disabledTask}
                       onChange={(e) => setObjective(e.target.value)}
                     />
-                  </div>
+                  </div> */}
                   <div>
                     {disabledTask ? <BtnEditTask /> : <BtnUpdatTask />}
                     <Button

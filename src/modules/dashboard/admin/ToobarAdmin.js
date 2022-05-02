@@ -42,7 +42,7 @@ export default function ToobarAdmin() {
           href="/adminprofile"
           className={classes.toolbarLink}
         >
-          Setting Course
+          Course Management
         </Link>
         <Link
           color="inherit"

@@ -113,7 +113,7 @@ export default function SettingProfile() {
         })
       })
       .catch((error) => {
-        swal('Failed', 'Error', 'error')
+        swal('Failed', 'Please verify email or username', 'error')
 
         console.log(error.response.status) // 401
         console.log(error.response.data.error)

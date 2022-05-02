@@ -55,8 +55,8 @@ export default function Signup() {
         })
       })
       .catch((error) => {
-        swal('Failed', 'Email  duplicate', 'error')
-        console.log('duplicate')
+        swal('Failed', 'Please verify email or username', 'error')
+        // console.log('duplicate')
       })
   }
   return (

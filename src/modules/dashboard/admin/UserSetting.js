@@ -6,6 +6,7 @@ import ToobarAdmin from './ToobarAdmin'
 import Userlist from './Userlist'
 import axios from 'axios'
 import AddUser from './AddUser'
+import { Toolbar } from '@material-ui/core'
 export default function UserSetting() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -63,6 +64,7 @@ export default function UserSetting() {
           {listuser}
         </Grid>
       </Grid>
+      <Toolbar></Toolbar>
     </div>
   )
 }

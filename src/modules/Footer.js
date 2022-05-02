@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: '0',
     width: '100%',
     maxWidth: '1280px',
+    position: 'fixed',
   },
 }))
 export default function Footer() {
@@ -25,9 +26,9 @@ export default function Footer() {
     <footer className={classes.footer}>
       <Container maxWidth="lg">
         <Typography component="h5" align="center" gutterBottom>
-          Copyright Practicing and Learning System
-        </Typography>
-      </Container>
+          Copyright Practicing and Learning System{' '}
+        </Typography>{' '}
+      </Container>{' '}
     </footer>
   )
 }

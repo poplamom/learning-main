@@ -159,7 +159,7 @@ export default function TaskDetail() {
                       onChange={(e) => setDesc(e.target.value)}
                     />
                   </div>
-                  <div>
+                  {/* <div>
                     <TextField
                       className={classes.txtFilds}
                       id="objective"
@@ -167,7 +167,7 @@ export default function TaskDetail() {
                       variant="outlined"
                       onChange={(e) => setObjective(e.target.value)}
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <Button
                       variant="contained"
