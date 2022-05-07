@@ -129,7 +129,13 @@ export default function Task({ no, name, desc, id }) {
           <Grid container className={classes.contentTask}>
             <Grid item container xl={12} className={classes.question}>
               <Grid item xl={9}>
-                <Typography variant="subtitle1">{desc}</Typography>
+                <Typography
+                  variant="subtitle1"
+                  style={{ whiteSpace: 'pre-line' }}
+                >
+                  {desc}
+                </Typography>
+                {/* <div>{desc}</div> */}
               </Grid>
               <Grid item xl={3} container className={classes.btnMachine}></Grid>
             </Grid>

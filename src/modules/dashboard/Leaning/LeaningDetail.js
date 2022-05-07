@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import { Grid, Button } from '@material-ui/core'
+import { Grid, Button, Toolbar } from '@material-ui/core'
 // import LinearProgress from '@material-ui/core/LinearProgress'
 import Task from './Task'
 import axios from 'axios'
@@ -64,6 +64,7 @@ export default function LeaningDetail() {
       })
 
       setTasks(data.course.tasks)
+      console.log(data.course.tasks)
       setCourse(data.course)
     }
 
@@ -95,6 +96,7 @@ export default function LeaningDetail() {
           </Grid>
         </Grid>
       </Grid>
+      <Toolbar></Toolbar>
     </div>
   )
 }

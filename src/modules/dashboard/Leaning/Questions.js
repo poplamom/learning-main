@@ -102,8 +102,10 @@ export default function Questions({
     <Grid container>
       <Grid item container xl={12}>
         <Grid item xl={10}>
-          <Typography variant="subtitle1" component="h2" gutterBottom>
-            <b>Questions : </b>
+          <Typography variant="subtitle1" style={{ whiteSpace: 'pre-line' }}>
+            <b>
+              Questions : <br></br>
+            </b>
             {name}
           </Typography>
 

@@ -170,6 +170,7 @@ export default function ListQuestion({
             className={classes.txtFildQandA}
             label="Questions"
             variant="outlined"
+            multiline
             value={Qnames}
             disabled={disabledQuests}
             onChange={(e) => setQName(e.target.value)}
