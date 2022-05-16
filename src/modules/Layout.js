@@ -18,7 +18,7 @@ export default function Layout() {
     <>
       <CssBaseline></CssBaseline>
       <Container maxWidth="lg" className={classes.mainGrid}>
-        <Header title="Leaning" />
+        <Header title="Learning" />
         <Content></Content>
         <Footer></Footer>
       </Container>
